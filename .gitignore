@@ -3,3 +3,6 @@
 
 # Ignore Object files
 *.o
+
+# Specific files
+/std_lib_facilities.h

@@ -1,8 +1,13 @@
 # Ignore all builds
 **/_builds
 
+# Ignore VSCode settings
+**/.vscode
+
 # Ignore Object files
 *.o
 
-# Specific files
+# Specific files & folders
 /std_lib_facilities.h
+*/c_cpp_properties.json
+**/.idea

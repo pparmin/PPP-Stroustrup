@@ -40,6 +40,7 @@ int main()
 /* repeated words
 */
 
+/* Counter
 int main()
 {
   string previous = " ";
@@ -55,5 +56,21 @@ int main()
       //cout << "repeated word: " << current << "\n";
     }
     previous = current;
+  }
+}*/
+
+/* Unsafe conversions */ 
+int main() 
+{
+  double d = 0;
+  while (cin >> d) {
+    
+    int i = d;          // try to get a double into an int
+    char c = i;         // try to get an int into a char
+    int i2 = c;         // get the integer value of the characters
+    cout << "d==" << d  // cout original double
+         << " i==" << i  // cout converted to int
+         << " i2==" << i2 // cout int value of char
+         << " char(" << c << ")\n"; // cout the char
   }
 }

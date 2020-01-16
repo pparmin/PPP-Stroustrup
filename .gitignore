@@ -8,6 +8,6 @@
 *.o
 
 # Specific files & folders
-/std_lib_facilities.h
-*/c_cpp_properties.json
+**/std_lib_facilities.h
+**/c_cpp_properties.json
 **/.idea

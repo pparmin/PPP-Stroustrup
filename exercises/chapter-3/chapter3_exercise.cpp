@@ -7,7 +7,7 @@ using namespace std;
 
 inline void keep_window_open() { char ch; cin>>ch; }
 
-/* Mile to kilometers converter
+/* Mile to kilometers converter */
 
 int main()
 {
@@ -18,7 +18,7 @@ int main()
   double kilometers = miles * 1.60934;
   cout << "The number of kilometers for " << miles << " miles is: "
        << kilometers << '\n';
-}*/
+}
 
 /* Larger, smaller, sum, difference, product, ratio 
 

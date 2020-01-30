@@ -11,6 +11,17 @@ Description:
 Write a program to play a numbers guessing game. The user thinks of a number between 1 
 and 100 and your program asks questions to figure out what the number is. Your program
 should be able to identify the number after asking no more than seven questions. 
+ 
+For the README: 
+This one proved especially difficult to solve. I wanted to use a recursive function to 
+get to the solution in an elegant and automised way. Understanding how the algorithm
+works was key here. I ran into trouble with the scope of the variables eventually and
+figuring that out took me a good while. Eventually it might have been easier to not
+use a recursive function. But then again, I did learn that in order to debug it, it's
+useful to limit the amount of recursions via a counter so I get a better overview of
+what is going on each recursion. Only when I did that, I could see that I always re-
+initialised one end of my range which led to problems. 
+
  */
 
 int counter = 0;
@@ -20,7 +31,6 @@ int upper = 100;
 // calculates the median value of the range to be used as new guess
 int calc_median(int lower, int upper) 
 {
-  int sum = 0;
   int range = upper + lower;
   int result;
 

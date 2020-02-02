@@ -1,4 +1,4 @@
-/* Exercise 8: Grains of Rice
+/* Exercise 8 & 9: Grains of Rice
 
 Description: 
 There is an old story that the emperor wanted to thank the inventor of the game of
@@ -6,6 +6,11 @@ There is an old story that the emperor wanted to thank the inventor of the game 
 of rice for the first square, 2 for the second, 4 for the third, and so on. Write a
 program to calculate how many squares are required to give the inventor at least 1000
 grains of rice, at least 1.000.000 grains, etc. 
+
+
+Depending on the size that each type can hold, you will get to output the value of all
+grains or not. Also, depending on the size of the type, you will get different approx-
+imation results. 
 */
 
 #include <iostream>
@@ -18,14 +23,14 @@ using namespace std;
 int main() 
 {
   int currentSquare = 0;
-  int currentGrains = 0;
-  int totalGrains = 0;
+  long double currentGrains = 0;
+  long double totalGrains = 0;
 
   int sqForThousand = 0;
   int sqForMillion = 0;
   int sqForBillion = 0;
 
-  for (int square = 1; square <= 31; ++square) {
+  for (int square = 1; square <= 45; ++square) {
     if (square == 1) {
       currentGrains = 1;
       totalGrains += currentGrains;
@@ -33,7 +38,7 @@ int main()
       currentGrains *= 2;
       totalGrains += currentGrains;
     }
-    
+
     cout << "grains: " << currentGrains << " at square: " << square << endl;
     cout << "total grains: " << totalGrains << endl;
 
@@ -48,4 +53,6 @@ int main()
       cout << "You just reached 1.000.000.000 grains after " << square << " squares\n";
     }
   }
+
+  return 0;
 }

@@ -42,9 +42,9 @@ int main()
     //cout << "Non divisible numbers: " << non_divisible_numbers << endl;
 
     // If the range - 1 equals the amount of non divisible numbers it needs to be a prime number
+    // therefore add to vector
     if (range == non_divisible_numbers) {
       primes.push_back(i);
-      cout << "Prime: " << i << " added to vector.\n";
     }
   } 
   cout << "Primes: \n";

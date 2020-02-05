@@ -5,7 +5,11 @@ Create a program to find all the prime numbers between 1 and 100. There is a cla
 "Sieve of Erastothenes". If you don't know that method, get on the web and look it up. Write your program using this 
 method. 
 
-
+The "Sieve of Erastothenes" is an ancient method for finding prime numbers in a specific range. Basically, one makes
+a list of all numbers within that range and then iteratively removes all multiples of each prime until there's no 
+multiples left. For more information, see here: https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes. I haven't yet 
+figured out a recursive approach to this, which results in the current program being a bit less elegant, since I have
+to manually make the calls. 
 */
 
 #include <iostream>

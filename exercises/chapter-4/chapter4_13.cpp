@@ -1,4 +1,4 @@
-/* Exercise 13: Sieve of Erastothenes
+/* Exercise 13 & 14: Sieve of Erastothenes
 
 Description:
 Create a program to find all the prime numbers between 1 and 100. There is a classic method for doing this, called the 
@@ -22,6 +22,11 @@ using namespace std;
 
 vector<int> removeNumber(vector<int> numbers, int number) 
 {
+/*if (numbers[0] > 7) {
+    return numbers;
+  } else if (numbers[0] >= 2 && numbers[0] < 7) {
+    return removeNumber(numbers)
+  }*/
   for (int i = 0; i < numbers.size(); i++) {
     if (numbers[i] % number == 0 && numbers[i] != number) {
       numbers.erase(numbers.begin() + i);

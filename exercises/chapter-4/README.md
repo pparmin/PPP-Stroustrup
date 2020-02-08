@@ -30,6 +30,7 @@ already made a browser based version of this simple game. It was
 interesting to compare both approaches (Javascript & C++). 
 
 **The Sieve of Erastothenes**
+
 The "Sieve of Erastothenes" is an ancient method for finding prime numbers in a specific range. Basically, one makes
 a list of all numbers within that range and then iteratively removes all multiples of each prime until there's no 
 multiples left. For more information, see here: https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes. I haven't yet 

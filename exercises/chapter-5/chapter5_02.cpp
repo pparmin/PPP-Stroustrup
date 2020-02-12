@@ -87,7 +87,6 @@ int main()
   double result;
   char m, cm;
 
-  // TODO: Add if-conditional for choosing type of conversion (either ctok or ktoc)
   cout << "Please insert the measure you want to convert from ('c' for Celsius, 'k' for Kelvin, 'f' for Fahrenheit): \n";
   cin >> m;
   // convert to lowercase so input can be either upper- or lowercase

@@ -8,4 +8,4 @@ set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED true)
 
 # add the executable
-add_executable(chapter5_02 chapter5_02.cpp)
+add_executable(chapter5_12 chapter5_12.cpp)

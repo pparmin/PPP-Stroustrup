@@ -1,4 +1,4 @@
-/* Exercise 8 & 9 & 10: 
+/* Exercise 8 & 9 & 10: Summing values
 
 */
 

@@ -6,20 +6,6 @@ in the range 0 to 9 (e.g., 1234 but not 1122) and it's the user's task to discov
 guesses. Say the number to be guessed is 1234 and the user guesses 1359; the response should be "1 bull and 1
 cow" because the user got one digit right and in the right position and one digit right but in the wrong position.
 The guessing continues until the user gets four bulls, that is, has the four digits correct and in the correct order.
-
-
-This exercise has challenged me more than I'd like to admit. I went through a bunch of trial and errors
-before I finally had found the right path. That path was realising that I would need to change the input.
-My first attempts continuously wrote an integer between 0 - 9 into the vector that I'd use for comparison.
-This created problems, since the exercise stated I could only end the input loop once the player had found 
-all 4 numbers in the correct order (4 bulls). I initially tried to built another game loop around it, but 
-didn't manage to make that work. So eventually I decided people should give all 4 numbers as a 4 digit integer
-value, that I would then split up into it's digits and add those digits to the vector for comparison. 
-
-Note: Since Stroustrups header-file produces an error during compilation that I couldn't fix yet, I did not 
-do the second part of this exercise in which I would have had to use a function within that header file. 
-Therefore the initial 4 numbers to be found remain hard-coded at this moment.
-
 */
 
 #include <iostream>

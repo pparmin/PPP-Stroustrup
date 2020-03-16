@@ -19,7 +19,7 @@ Verb
 	"fly"
 	"swim"
 
-Description: Write a program that checks if a sentence is correct according to the "English" grammar in §6.4.1. Assume that every sentence
+Description: Write a program that checks if a sentence is correct according to the "English" grammar in ï¿½6.4.1. Assume that every sentence
 is terminated by a full stop (.) surrounded by whitespace.
 
 
@@ -54,27 +54,11 @@ public:
 	bool checkOrder(vector<char> types);
 
 private:
-	bool isArticle = false;
-	bool isNoun = false;
-	bool isVerb = false;
-	bool isConj = false;
-	/*string get();
-	bool sentence(string word);
-	bool compare(string word);
-	//bool article(string word);
-	bool noun(string word);
-	bool verb(string word);
-	bool conjunction(string word);
-	bool existsIn(vector<string> target, string word);
-private:
-	bool isArticle = false;
-	bool isNoun = false;
-	bool isVerb = false;
-	bool isConjunction = false;
-	vector<string> nouns = { "birds", "fish", "c++" };
-	vector<string> verbs = { "rules", "fly", "swim" };
-	vector<string> conj = { "and", "or", "but" };
-	string article = "the";*/
+	bool withArticle = false;
+	// bool isArticle = false;
+	// bool isNoun = false;
+	// bool isVerb = false;
+	// bool isConj = false;
 };
 
 Word_stream WS;
@@ -82,7 +66,7 @@ Word_stream WS;
 // checks existence of word in list and returns type of string
 Word Word_stream::checkType(string word)
 {
-	vector<string> nouns = { "birds", "fish", "c++" };
+	vector<string> nouns = { "birds", "fish", "C++" };
 	vector<string> verbs = { "rules", "fly", "swim" };
 	vector<string> conj = { "and", "or", "but" };
 	string article = "the";
@@ -109,34 +93,79 @@ Word Word_stream::checkType(string word)
 		}
 	}
 
+	if (word == ".") 
+	{
+		return Word('.');
+	}
+
 	cout << "The word you chose could not be found within the list." << endl;
 	return Word('f');
 }
 
+
+// checks the correct order within each sentence. In order to do so, it compares entries within a 
+// vector that holds the order of the input and a vector that holds the correct order. 
 bool Word_stream::checkOrder(vector<char> types)
 {
 	// compares order for both "Article Noun Verb" and "Noun Verb"
-	vector<char> order = { 'a', 'n', 'v' };
+	vector<char> order = { 'n', 'v' };
+	vector<char> order_a = { 'a', 'n', 'v' };
+
+	int order_size = order.size();
+	int order_a_size = order_a.size();
 	int count = 0;
 
+	// Is there an article in the sentence?
 	for (char entry : types) {
-		for (char item : order) {
-			if (entry == item) {
+		if (entry == 'a') 
+		{
+			withArticle = true;
+		}
+	}
+
+	// comparison for sentences with article
+	if (withArticle) 
+	{
+		for (char entry : types) {
+
+			// if conjunction encountered set variables to initial values and increase counter
+			if (entry == 'c') {
+			count++;
+			withArticle = false;
+			order = { 'n', 'v' };
+			order_a = { 'a', 'n', 'v' };
+			}
+			for (char item : order_a) {
+				if (entry == item)
+				{
+					count++;
+					order_a.erase(order_a.begin());
+				}
+			}
+		}
+	} 
+
+	// comparison for sentences without article
+	else {
+		for (char entry : types) {
+			// if conjunction encountered set variables to initial values and increase counter
+			if (entry == 'c')
+			{
 				count++;
-				cout << "count increased " << endl;
+				withArticle = false;
+				order = {'n', 'v'};
+				order_a = {'a', 'n', 'v'};
+			}
+			for (char item : order) {
+				if (entry == item)
+				{
+					count++;
+					order.erase(order.begin());
+				}
 			}
 		}
 	}
-	cout << "count: " << count << endl;
-	if (count == order.size() || count == order.size() - 1)
-		return true;
-
-	/*for (char entry : types) {
-		for (char item : order_two) {
-			if (entry == item)
-				return true;
-		}
-	}*/
+	if (count == types.size()) return true;
 
 	return false;
 }
@@ -152,7 +181,7 @@ Word Word_stream::get()
 
 	Word w = WS.checkType(word);
 	switch (w.type) {
-	case 'a': case 'n': case 'v': case 'c': case 'f':
+	case 'a': case 'n': case 'v': case 'f': case 'c':
 		return Word(w.type, word);
 
 	default:
@@ -166,6 +195,16 @@ Word Word_stream::get()
 
 // -------------------------------------------------------------------------------------------- //
 
+Word sentence() 
+{
+	Word w = WS.get();
+	if (w.type == '.') 
+	{
+		return Word('.');
+	} 
+	return w;
+}
+
 int main()
 {
 	try {
@@ -173,37 +212,19 @@ int main()
 		bool correctOrder = false;
 		cout << "Welcome! Please form a proper sentence out of the following words. Choose one each type:" << '\n'
 			<< "Article: 'the'; Noun: 'birds, fish, C++'; Verb: 'rules, fly, swim'; Conjunction: 'and, or, but':" << '\n'
-			<< "Remember: A sentence consists of either Article Noun Verb or Noun Verb or Sentence Conjunction Sentence. " << endl;
+			<< "Remember: A sentence consists of either Article Noun Verb or Noun Verb or Sentence Conjunction Sentence. " << '\n' 
+			<< "the program will then tell you if your sentence is OK or Not OK." << endl;
 		while (cin) {
-			Word w = WS.get();
-			cout << "w.type: " << w.type << " w.meaning: " << w.meaning << endl;
+			Word w = sentence();
 
 			// discover end of sentence
 			if (w.type == '.')
 				break;
 
-			if (w.type == 'f') {
-				cout << "Please use one of the words within the list." << endl;
-			}
 
 			types.push_back(w.type);
-			/*string word = w_s.get();
-			cout << "word: " << word << endl;
-			if (word == ".")
-				break;
+		}
 
-			bool wordDoesExist = w_s.sentence(word);
-
-			if (wordDoesExist) {
-				cout << "OK" << endl;
-			}
-			else if (!wordDoesExist) {
-				cout << "Not OK" << endl;
-			}*/
-
-			for (char entry : types) {
-				cout << "type: " << entry << endl;
-			}
 			correctOrder = WS.checkOrder(types);
 			if (correctOrder) {
 				cout << "OK" << endl;
@@ -211,8 +232,6 @@ int main()
 			else if (!correctOrder) {
 				cout << "Not OK" << endl;
 			}
-		}
-			//bool isSentence = sentence();
 		return 0;
 	}
 	catch (exception & e) {

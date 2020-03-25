@@ -1,6 +1,8 @@
 /* Exercise 9: Digit to Integer Converter
 
-TODO: Get the full number (meaning '1''4''7' is 147 as integer)
+Description: Write a program that reads digits nd composes them into integers. For example, 123 is read
+as the characters 1, 2, and 3. The program should output 123 is 1 hundred and 2 tens and 3 ones. The number
+should be output as an int value. Handle numbers with one, two, three, or four digits.
 */
 
 #include <iostream>
@@ -93,6 +95,7 @@ void Number::output(vector<int> numbers)
     cout << final_number << " is " << numbers[0] << " thousands and " << numbers[1] << " hundreds and "
          << numbers[2] << " tens and " << numbers[3] << " ones." << endl;
   }
+  // set size back to 0 for next result
   size = 0;
 }
 
@@ -100,8 +103,6 @@ int main()
 {
   try 
   {
-    // Vectors for output
-    vector<char> digits;
     vector<int> numbers;
 
     cout << "Please input a number for conversion. In order to indicate your final number"
@@ -112,17 +113,14 @@ int main()
       if (n.digit == '=')         // handles end of number
       {
         n.output(numbers);        // create the output
-        numbers = {};             // set 
-        digits = {};
+        numbers = {};             // delete all numbers from vector for next result
         continue;
       }
 
+      if (n.digit == 'x') break;  // end program
+
       n = n.convertDigit(n);
-      //cout << "original digit: " << n.digit << endl;
-      digits.push_back(n.digit);
-      //cout << "integer digit: " << n.number << endl;
       numbers.push_back(n.number);  
-      //cout << "numbers size pre-deletion: " << numbers.size() << endl;
 
       if (numbers.size() > 4) {
         error("Please only enter numbers that have a length between 1 and 4 digits.");

@@ -37,20 +37,23 @@ int permutations(int a, int b)
   unsigned long long int result = (factorial(a)) / (factorial(t));
   cout << "result one: " << result_one << " result two: " << result_two << endl;
   cout << "result of permutations: " << result << endl;
+  return result;
 }
 
 int combinations(int a, int b)
 {
 
-  unsigned long long int result_one = permutations(a, b);
-  unsigned long long int result_two = factorial(b);
+  unsigned long long int result_one = factorial(a);
+  unsigned long long int result_two = factorial(b) * factorial(a - b);
   cout << "Result one in C: " << result_one << endl; 
   cout << "Result two in C: " << result_two << endl; 
 
   if (result_one < result_two) 
     error("The second number is larger than first (combinations)");
+
   unsigned long long int result = result_one / result_two;
   cout << "Result of combinations: " << result << endl;
+  return result;
 }
 
 int main()
@@ -65,13 +68,22 @@ int main()
 
     while (cin >> a >> b >> type)
     {
-      if (type == 'p') 
-        permutations(a, b);
-      else if (type == 'c')
-        combinations(a, b);
+        if (type == 'p') 
+        {
+            result = permutations(a, b);
+            cout << "Result: " << result << " permutations" << endl;
+        }
+
+        else if (type == 'c')
+        {
+            result = combinations(a, b);
+            cout << "Result: " << result << " combinations" << endl;
+        }
 
       else 
         error("Please enter a proper type (c or p).");
+        
+   
     }
   }
   catch(exception &e) 

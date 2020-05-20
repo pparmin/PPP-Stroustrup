@@ -1,5 +1,7 @@
 # Ignore all builds
 **/_builds
+**/builds
+**/build
 
 # Ignore VSCode settings
 **/.vscode
